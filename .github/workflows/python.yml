@@ -1,0 +1,22 @@
+name: checkin
+
+on:
+  schedule:
+    - cron: '0 16 * * *'
+
+jobs:
+  checkin:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Setup Python'
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+      - name: 'Install Requirements'
+        run: pip install -r src/requirements.txt
+      - name: 'Run Script'
+        env:
+          Test: ${{ secrets.Test }}
+        run: python src/main.py
