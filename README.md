@@ -1,8 +1,8 @@
 <div align="center">
 
-<h1>和平营地</h1>
+<h1>和平营地自动任务</h1>
 
-> **Action 自动签到**
+> **基于Actions的和平营地自动任务**
 
 [![Source Stars](https://img.shields.io/github/stars/HdShare/PubgmhdAction?label=Source%20Stars)](https://github.com/HdShare/PubgmhdAction)
 [![Source Issues](https://img.shields.io/github/issues/HdShare/PubgmhdAction?label=Source%20Issues)](https://github.com/HdShare/PubgmhdAction/issues)
@@ -22,3 +22,5 @@
 | sig                |
 | timestamp          |
 | roleId             |
+| userId             |
+| token              |

@@ -25,4 +25,6 @@ jobs:
           sig: ${{ secrets.sig }}
           timestamp: ${{ secrets.timestamp }}
           roleId: ${{ secrets.roleId }}
+          userId: ${{ secrets.userId }}
+          token: ${{ secrets.token }}
         run: python src/main.py
