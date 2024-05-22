@@ -8,18 +8,37 @@
 
 ---
 
-## 关键参数
+## Actions 状态
 
-| Repository secrets |
-|--------------------|
-| appid              |
-| msdkEncodeParam    |
-| openid             |
-| sig                |
-| timestamp          |
-| roleId             |
-| userId             |
-| token              |
+[![Python](https://github.com/HdShare/PubgmhdAction/actions/workflows/python.yml/badge.svg)](https://github.com/HdShare/PubgmhdAction/actions/workflows/python.yml)
+
+---
+
+## 使用说明
+
+请按照以下步骤来配置和使用这个项目：
+
+1. **Fork 项目**：点击项目右上角的 "Fork" 按钮，将这个项目复制到你的 GitHub 账户中。
+
+2. **设置 Secrets**：在你的 GitHub 仓库中，点击 "Settings"（设置），然后在左侧菜单中，点击 "Secrets"（密钥）。点击 "New
+   repository secret"（新建仓库密钥），并添加以下密钥：
+    - `appid`
+    - `msdkEncodeParam`
+    - `openid`
+    - `sig`
+    - `timestamp`
+    - `roleId`
+    - `userId`
+    - `token`
+
+3. **启用 GitHub Actions**：在 "Settings"（设置）页面，点击 "Actions"（操作），然后在 "General"（通用）部分，选择 "Read and write
+   permissions"（读写权限）。勾选 "Allow GitHub Actions to create and approve pull requests"（允许 GitHub Actions
+   创建和批准拉取请求），然后点击 "Save"（保存）。
+
+4. **启用工作流**：在 "Actions"（操作）页面，点击 "I understand my workflows, go ahead and enable them"
+   （我了解我的工作流，继续并启用它们），然后点击 "Enable workflow"（启用工作流）。
+
+现在，你的项目应该已经配置好了，并且可以正常运行。
 
 ---
 
