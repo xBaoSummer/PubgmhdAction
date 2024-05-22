@@ -1,4 +1,4 @@
-name: checkin
+name: Python
 
 on:
   workflow_dispatch:
@@ -6,17 +6,20 @@ on:
     - cron: '0 16 * * *'
 
 jobs:
-  checkin:
+  Python:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
+
       - name: 'Setup Python'
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+
       - name: 'Install Requirements'
         run: pip install -r src/requirements.txt
+
       - name: 'Run Script'
         env:
           appid: ${{ secrets.appid }}
@@ -27,4 +30,12 @@ jobs:
           roleId: ${{ secrets.roleId }}
           userId: ${{ secrets.userId }}
           token: ${{ secrets.token }}
-        run: python src/main.py
+        run: python src/main.py >> src/run.log
+
+      - name: ‘Auto Commit’
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: master
+          commit_message: update run.log
+          commit_user_name: GitHub Actions
+          commit_user_email: actions@github.com

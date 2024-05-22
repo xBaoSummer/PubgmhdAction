@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 
 import requests
 
@@ -30,4 +31,6 @@ def signin():
 
 
 if __name__ == '__main__':
+    print("##########################################")
+    print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     signin()
