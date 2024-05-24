@@ -41,6 +41,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: master
+          file_pattern: log/run.log
           commit_message: update run.log
           commit_user_name: GitHub Actions
           commit_user_email: actions@github.com
