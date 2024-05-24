@@ -1,6 +1,6 @@
+import os
+import sys
 from datetime import datetime
-
-from src.http import HttpApi
 
 
 def signin():
@@ -74,6 +74,9 @@ def task_complete(task_id, task_detail):
 
 
 if __name__ == '__main__':
+    sys.path.append(os.getcwd())
+    from src.http import HttpApi
+
     print("##########################################")
     print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     # EnvUtil.init()
