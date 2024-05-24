@@ -1,6 +1,5 @@
 from datetime import datetime
 
-from src.env import EnvUtil
 from src.http import HttpApi
 
 
