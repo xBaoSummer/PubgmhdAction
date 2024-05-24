@@ -38,6 +38,7 @@ def post_h5api(url, params):
 
 def post_api(url, params):
     common_params = {
+        "gameId": "20004",
         "userId": os.environ["userId"],
         "token": os.environ["token"],
     }
