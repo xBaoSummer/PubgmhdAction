@@ -36,10 +36,16 @@ def tasklist():
 def gift_receive(gift_id, gift_title):
     if gift_id == 1:
         print("福利币*100")
+        if HttpApi.task_complete(gift_id) is not None:
+            print(f"已领取礼包: {gift_id}-{gift_title}")
     elif gift_id == 2:
         print("营地装饰碎片*50")
+        if HttpApi.task_complete(gift_id) is not None:
+            print(f"已领取礼包: {gift_id}-{gift_title}")
     elif gift_id == 3:
         print("福利币*200")
+        if HttpApi.task_complete(gift_id) is not None:
+            print(f"已领取礼包: {gift_id}-{gift_title}")
     else:
         print(f"未知礼包: {gift_id}-{gift_title}")
 
@@ -59,14 +65,19 @@ def task_complete(task_id, task_detail):
         print("本日观看直播5分钟")
     elif task_id == 33:
         print("本周启用游戏工具至少一个")
+        if HttpApi.game_tool("4", "1") is not None:
+            print(f"已完成任务: {task_id}-{task_detail}")
+            HttpApi.task_complete(task_id)
     elif task_id == 34:
         print("本日分享资讯到社交网络")
         if HttpApi.share("shareInfo", "1") is not None:
             print(f"已完成任务: {task_id}-{task_detail}")
+            HttpApi.task_complete(task_id)
     elif task_id == 35:
         print("本周分享战绩周报到社交网络")
         if HttpApi.share("shareH5", "https://c.gp.qq.com/camp/weekly/index") is not None:
             print(f"已完成任务: {task_id}-{task_detail}")
+            HttpApi.task_complete(task_id)
     elif task_id == 36:
         print("观看PEL赛事直播5分钟")
     else:
@@ -77,8 +88,10 @@ if __name__ == '__main__':
     sys.path.append(os.getcwd())
     from src.http import HttpApi
 
+    # from src.env import EnvUtil
+    #
+    # EnvUtil.init()
     print("##########################################")
     print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    # EnvUtil.init()
     signin()
     tasklist()
