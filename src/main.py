@@ -22,6 +22,8 @@ def tasklist():
             if task_status == 0:
                 print(f"正在完成任务: {task_id}-{task_detail}")
                 task_complete(task_id, task_detail)
+            elif task_status == 2:
+                HttpApi.task_complete(task_id)
 
         gift_list = resp_json["data"]["liveness"]["livenessGiftList"]
         for gift in gift_list:
