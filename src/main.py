@@ -61,6 +61,14 @@ def task_complete(task_id, task_detail):
         print("本日为动态点赞3次")
     elif task_id == 30:
         print("本日浏览资讯5分钟")
+        ext_data = [{
+            "reportInterval": 5,
+            "eventId": 100004,
+            "subModuleId": 27,
+            "page": 101004,
+            "moduleId": 1
+        }] * 12
+        module_report(ext_data, task_id, task_detail)
     elif task_id == 31:
         print("本日观看直播5分钟")
         ext_data = [{
@@ -70,15 +78,7 @@ def task_complete(task_id, task_detail):
             "page": 109002,
             "moduleId": 9
         }] * 12
-        report_count = 0
-        for i in range(5):
-            if HttpApi.module_report(ext_data) is not None:
-                report_count += 1
-        if report_count == 5:
-            print(f"任务成功: {task_id}-{task_detail}")
-            HttpApi.task_complete(task_id)
-        else:
-            print(f"任务失败: {task_id}-{task_detail}")
+        module_report(ext_data, task_id, task_detail)
     elif task_id == 33:
         print("本周启用游戏工具至少一个")
         if HttpApi.game_tool("4", "1") is not None:
@@ -102,8 +102,28 @@ def task_complete(task_id, task_detail):
             print(f"任务失败: {task_id}-{task_detail}")
     elif task_id == 36:
         print("观看PEL赛事直播5分钟")
+        ext_data = [{
+            "reportInterval": 5,
+            "eventId": 400016,
+            "subModuleId": 26,
+            "page": 102004,
+            "moduleId": 9
+        }] * 12
+        module_report(ext_data, task_id, task_detail)
     else:
         print(f"未知任务: {task_id}-{task_detail}")
+
+
+def module_report(ext_data, task_id, task_detail):
+    report_count = 0
+    for _ in range(5):
+        if HttpApi.module_report(ext_data) is not None:
+            report_count += 1
+    if report_count == 5:
+        print(f"任务成功: {task_id}-{task_detail}")
+        HttpApi.task_complete(task_id)
+    else:
+        print(f"任务失败: {task_id}-{task_detail}")
 
 
 if __name__ == '__main__':

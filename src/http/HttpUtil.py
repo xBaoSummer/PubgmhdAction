@@ -38,8 +38,8 @@ def post_h5api(url, params):
 
 def post_api(url, params):
     common_params = {
-        "gameId": "20004",  # 待测试是否必需
-        "cGameId": "20004",  # 待测试是否必需
+        "gameId": "20004",
+        "cGameId": "20004",
         "userId": os.environ["userId"],
         "token": os.environ["token"],
     }
