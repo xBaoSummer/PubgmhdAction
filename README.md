@@ -1,5 +1,8 @@
 <p align="center">
-    <img src="https://socialify.git.ci/HdShare/PubgmhdAction/image?description=1&font=Rokkitt&language=1&name=1&owner=1&theme=Auto"/>
+    <img src="https://socialify.git.ci/HdShare/PubgmhdAction/image?description=1&font=Rokkitt&language=1&name=1&owner=1&theme=Auto" alt="socialify"/>
+</p>
+
+<p align="center">
     <a href="https://github.com/HdShare/PubgmhdAction/stargazers"><img src="https://img.shields.io/github/stars/HdShare/PubgmhdAction?style=flat-square&label=STARS&color=%23dfb317" alt="stars"></a>
     <a href="https://github.com/HdShare/PubgmhdAction/network/members"><img src="https://img.shields.io/github/forks/HdShare/PubgmhdAction?style=flat-square&label=FORKS&color=%2397ca00" alt="forks"></a>
     <a href="https://github.com/HdShare/PubgmhdAction/issues"><img src="https://img.shields.io/github/issues/HdShare/PubgmhdAction?style=flat-square&label=ISSUES&color=%23007ec6" alt="issues"></a>
@@ -8,9 +11,11 @@
 
 ---
 
-## Actions 状态
+## 运行状态
 
-[![Python](https://github.com/HdShare/PubgmhdAction/actions/workflows/python.yml/badge.svg)](https://github.com/HdShare/PubgmhdAction/actions/workflows/python.yml)
+<p align="center">
+    <img src="https://github.com/HdShare/PubgmhdAction/actions/workflows/python.yml/badge.svg" alt="badge"/>
+</p>
 
 ---
 
@@ -22,6 +27,7 @@
 
 2. **设置 Secrets**：在你的 GitHub 仓库中，点击 "Settings"（设置），然后在左侧菜单中，点击 "Secrets"（密钥）。点击 "New
    repository secret"（新建仓库密钥），并添加以下密钥：
+
     - `appid`
     - `msdkEncodeParam`
     - `openid`
@@ -45,5 +51,5 @@
 ## 历史点赞
 
 <p align="center">
-    <a href="https://starchart.cc/HdShare/PubgmhdAction"><img src="https://starchart.cc/HdShare/PubgmhdAction.svg?variant=adaptive" alt="starchart"></a>
+    <img src="https://starchart.cc/HdShare/PubgmhdAction.svg?variant=adaptive" alt="starchart">
 </p>
