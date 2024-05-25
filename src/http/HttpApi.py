@@ -1,3 +1,5 @@
+import json
+
 from src.http import HttpUtil
 
 
@@ -32,6 +34,16 @@ def task_complete(task_id):
         "/completescoretask.php",
         {
             "taskId": task_id,
+        }
+    )
+    return resp_json
+
+
+def module_report(ext_data):
+    resp_json = HttpUtil.post_api(
+        "/game/batchmodulelogreport",
+        {
+            "extData": json.dumps(ext_data),
         }
     )
     return resp_json
