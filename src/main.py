@@ -36,15 +36,15 @@ def tasklist():
 def gift_receive(gift_id, gift_title):
     if gift_id == 1:
         print("福利币*100")
-        if HttpApi.task_complete(gift_id) is not None:
+        if HttpApi.gift_receive(gift_id) is not None:
             print(f"已领取礼包: {gift_id}-{gift_title}")
     elif gift_id == 2:
         print("营地装饰碎片*50")
-        if HttpApi.task_complete(gift_id) is not None:
+        if HttpApi.gift_receive(gift_id) is not None:
             print(f"已领取礼包: {gift_id}-{gift_title}")
     elif gift_id == 3:
         print("福利币*200")
-        if HttpApi.task_complete(gift_id) is not None:
+        if HttpApi.gift_receive(gift_id) is not None:
             print(f"已领取礼包: {gift_id}-{gift_title}")
     else:
         print(f"未知礼包: {gift_id}-{gift_title}")
@@ -87,7 +87,6 @@ def task_complete(task_id, task_detail):
 if __name__ == '__main__':
     sys.path.append(os.getcwd())
     from src.http import HttpApi
-
     # from src.env import EnvUtil
     #
     # EnvUtil.init()

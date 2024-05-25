@@ -17,6 +17,16 @@ def tasklist():
     return resp_json
 
 
+def gift_receive(gift_id):
+    resp_json = HttpUtil.post_h5api(
+        "/act_receivelivenessgift.php",
+        {
+            "giftId": gift_id,
+        }
+    )
+    return resp_json
+
+
 def task_complete(task_id):
     resp_json = HttpUtil.post_h5api(
         "/completescoretask.php",
