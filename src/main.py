@@ -58,11 +58,37 @@ def task_complete(task_id, task_detail):
     elif task_id == 27:
         print("本日取胜1局计分模式（前五）")
     elif task_id == 28:
-        print("本日为资讯点赞3次")
+        # print("本日为资讯点赞3次")
+        page_info = HttpApi.page_info()
+        if page_info is not None:
+            like_count = 0
+            for i in range(3):
+                if HttpApi.like_info(page_info["data"]["list"][i]["iInfoId"], "1") is not None:
+                    like_count += 1
+            if like_count == 3:
+                print(f">任务成功: {task_id}-{task_detail}")
+                HttpApi.task_complete(task_id)
+            else:
+                print(f">任务失败: {task_id}-{task_detail}")
+        else:
+            print(f">任务失败: {task_id}-{task_detail}")
     elif task_id == 29:
-        print("本日为动态点赞3次")
+        # print("本日为动态点赞3次")
+        page_moment = HttpApi.page_moment()
+        if page_moment is not None:
+            like_count = 0
+            for i in range(3):
+                if HttpApi.like_moment(page_moment["data"]["list"][i]["momentId"], "1") is not None:
+                    like_count += 1
+            if like_count == 3:
+                print(f">任务成功: {task_id}-{task_detail}")
+                HttpApi.task_complete(task_id)
+            else:
+                print(f">任务失败: {task_id}-{task_detail}")
+        else:
+            print(f">任务失败: {task_id}-{task_detail}")
     elif task_id == 30:
-        print("本日浏览资讯5分钟")
+        # print("本日浏览资讯5分钟")
         ext_data = [{
             "reportInterval": 5,
             "eventId": 100004,
@@ -72,7 +98,7 @@ def task_complete(task_id, task_detail):
         }] * 12
         module_report(ext_data, task_id, task_detail)
     elif task_id == 31:
-        print("本日观看直播5分钟")
+        # print("本日观看直播5分钟")
         ext_data = [{
             "reportInterval": 5,
             "eventId": 10901001,
@@ -82,28 +108,28 @@ def task_complete(task_id, task_detail):
         }] * 12
         module_report(ext_data, task_id, task_detail)
     elif task_id == 33:
-        print("本周启用游戏工具至少一个")
+        # print("本周启用游戏工具至少一个")
         if HttpApi.game_tool("4", "1") is not None:
-            print(f"任务成功: {task_id}-{task_detail}")
+            print(f">任务成功: {task_id}-{task_detail}")
             HttpApi.task_complete(task_id)
         else:
-            print(f"任务失败: {task_id}-{task_detail}")
+            print(f">任务失败: {task_id}-{task_detail}")
     elif task_id == 34:
-        print("本日分享资讯到社交网络")
+        # print("本日分享资讯到社交网络")
         if HttpApi.share("shareInfo", "1") is not None:
-            print(f"任务成功: {task_id}-{task_detail}")
+            print(f">任务成功: {task_id}-{task_detail}")
             HttpApi.task_complete(task_id)
         else:
-            print(f"任务失败: {task_id}-{task_detail}")
+            print(f">任务失败: {task_id}-{task_detail}")
     elif task_id == 35:
-        print("本周分享战绩周报到社交网络")
+        # print("本周分享战绩周报到社交网络")
         if HttpApi.share("shareH5", "https://c.gp.qq.com/camp/weekly/index") is not None:
-            print(f"任务成功: {task_id}-{task_detail}")
+            print(f">任务成功: {task_id}-{task_detail}")
             HttpApi.task_complete(task_id)
         else:
-            print(f"任务失败: {task_id}-{task_detail}")
+            print(f">任务失败: {task_id}-{task_detail}")
     elif task_id == 36:
-        print("观看PEL赛事直播5分钟")
+        # print("观看PEL赛事直播5分钟")
         ext_data = [{
             "reportInterval": 5,
             "eventId": 400016,
@@ -113,7 +139,7 @@ def task_complete(task_id, task_detail):
         }] * 12
         module_report(ext_data, task_id, task_detail)
     else:
-        print(f"未知任务: {task_id}-{task_detail}")
+        print(f">未知任务: {task_id}-{task_detail}")
 
 
 def module_report(ext_data, task_id, task_detail):
@@ -122,16 +148,15 @@ def module_report(ext_data, task_id, task_detail):
         if HttpApi.module_report(ext_data) is not None:
             report_count += 1
     if report_count == 5:
-        print(f"任务成功: {task_id}-{task_detail}")
+        print(f">任务成功: {task_id}-{task_detail}")
         HttpApi.task_complete(task_id)
     else:
-        print(f"任务失败: {task_id}-{task_detail}")
+        print(f">任务失败: {task_id}-{task_detail}")
 
 
 if __name__ == '__main__':
     sys.path.append(os.getcwd())
     from src.http import HttpApi
-
     # from src.env import EnvUtil
     #
     # EnvUtil.init()

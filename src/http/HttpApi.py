@@ -39,12 +39,35 @@ def task_complete(task_id):
     return resp_json
 
 
+def page_info():
+    resp_json = HttpUtil.post_api(
+        "/game/infomainpage",
+        {
+            "type": "51005184",
+            "pos1": "2",
+            "sort": "2",
+            "page": "1"
+        }
+    )
+    return resp_json
+
+
 def like_info(info_id, status):
     resp_json = HttpUtil.post_api(
         "/user/addlike",
         {
             "iInfoId": info_id,
             "like": status,
+        }
+    )
+    return resp_json
+
+
+def page_moment():
+    resp_json = HttpUtil.post_api(
+        "/moment/squaretagmoments",
+        {
+            "tagId": "1"
         }
     )
     return resp_json
