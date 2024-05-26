@@ -9,11 +9,10 @@ def signin():
         print("签到成功")
 
 
-def tasklist():
+def do_task_list():
     resp_json = HttpApi.tasklist()
     if resp_json is not None:
-        print("任务列表获取成功")
-
+        # print("任务列表获取成功")
         task_list = resp_json["data"]["taskList"]
         for task in task_list:
             task_id = task["taskId"]
@@ -24,32 +23,6 @@ def tasklist():
                 task_complete(task_id, task_detail)
             elif task_status == 2:
                 HttpApi.task_complete(task_id)
-
-        gift_list = resp_json["data"]["liveness"]["livenessGiftList"]
-        for gift in gift_list:
-            gift_id = gift["giftId"]
-            gift_title = gift["giftTitle"]
-            gift_status = gift["status"]
-            if gift_status == 1:
-                print(f"正在领取礼包: {gift_id}-{gift_title}")
-                gift_receive(gift_id, gift_title)
-
-
-def gift_receive(gift_id, gift_title):
-    if gift_id == 1:
-        print("福利币*100")
-        if HttpApi.gift_receive(gift_id) is not None:
-            print(f"已领取礼包: {gift_id}-{gift_title}")
-    elif gift_id == 2:
-        print("营地装饰碎片*50")
-        if HttpApi.gift_receive(gift_id) is not None:
-            print(f"已领取礼包: {gift_id}-{gift_title}")
-    elif gift_id == 3:
-        print("福利币*200")
-        if HttpApi.gift_receive(gift_id) is not None:
-            print(f"已领取礼包: {gift_id}-{gift_title}")
-    else:
-        print(f"未知礼包: {gift_id}-{gift_title}")
 
 
 def task_complete(task_id, task_detail):
@@ -154,6 +127,37 @@ def module_report(ext_data, task_id, task_detail):
         print(f">任务失败: {task_id}-{task_detail}")
 
 
+def do_gift_list():
+    resp_json = HttpApi.tasklist()
+    if resp_json is not None:
+        # print("礼物列表获取成功")
+        gift_list = resp_json["data"]["liveness"]["livenessGiftList"]
+        for gift in gift_list:
+            gift_id = gift["giftId"]
+            gift_title = gift["giftTitle"]
+            gift_status = gift["status"]
+            if gift_status == 1:
+                print(f"正在领取礼包: {gift_id}-{gift_title}")
+                gift_receive(gift_id, gift_title)
+
+
+def gift_receive(gift_id, gift_title):
+    if gift_id == 1:
+        # print("福利币*100")
+        if HttpApi.gift_receive(gift_id) is not None:
+            print(f">已领取礼包: {gift_id}-{gift_title}")
+    elif gift_id == 2:
+        # print("营地装饰碎片*50")
+        if HttpApi.gift_receive(gift_id) is not None:
+            print(f">已领取礼包: {gift_id}-{gift_title}")
+    elif gift_id == 3:
+        # print("福利币*200")
+        if HttpApi.gift_receive(gift_id) is not None:
+            print(f">已领取礼包: {gift_id}-{gift_title}")
+    else:
+        print(f">未知礼包: {gift_id}-{gift_title}")
+
+
 if __name__ == '__main__':
     sys.path.append(os.getcwd())
     from src.http import HttpApi
@@ -163,4 +167,5 @@ if __name__ == '__main__':
     print("##########################################")
     print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     signin()
-    tasklist()
+    do_task_list()
+    do_gift_list()
