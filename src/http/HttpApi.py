@@ -39,6 +39,28 @@ def task_complete(task_id):
     return resp_json
 
 
+def like_info(info_id, status):
+    resp_json = HttpUtil.post_api(
+        "/user/addlike",
+        {
+            "iInfoId": info_id,
+            "like": status,
+        }
+    )
+    return resp_json
+
+
+def like_moment(moment_id, status):
+    resp_json = HttpUtil.post_api(
+        "/moment/like",
+        {
+            "momentId": moment_id,
+            "type": status,
+        }
+    )
+    return resp_json
+
+
 def module_report(ext_data):
     resp_json = HttpUtil.post_api(
         "/game/batchmodulelogreport",
