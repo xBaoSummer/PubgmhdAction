@@ -27,9 +27,11 @@ def do_task_list():
 
 def task_complete(task_id, task_detail):
     if task_id == 26:
-        print("本日通过和平营地启动1次游戏")
+        # print("本日通过和平营地启动1次游戏")
+        print(f">任务失败: {task_id}-{task_detail}")
     elif task_id == 27:
-        print("本日取胜1局计分模式（前五）")
+        # print("本日取胜1局计分模式（前五）")
+        print(f">任务失败: {task_id}-{task_detail}")
     elif task_id == 28:
         # print("本日为资讯点赞3次")
         page_info = HttpApi.page_info()
