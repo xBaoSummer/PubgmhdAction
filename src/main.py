@@ -40,7 +40,9 @@ def task_complete(task_id, task_detail):
             for i in range(5):
                 if HttpApi.like_info(page_info["data"]["list"][i]["iInfoId"], "1") is not None:
                     like_count += 1
-            if like_count >= 3:
+                    if like_count == 3:
+                        break
+            if like_count == 3:
                 print(f">任务成功: {task_id}-{task_detail}")
                 HttpApi.task_complete(task_id)
             else:
@@ -55,7 +57,9 @@ def task_complete(task_id, task_detail):
             for i in range(5):
                 if HttpApi.like_moment(page_moment["data"]["list"][i]["momentId"], "1") is not None:
                     like_count += 1
-            if like_count >= 3:
+                    if like_count == 3:
+                        break
+            if like_count == 3:
                 print(f">任务成功: {task_id}-{task_detail}")
                 HttpApi.task_complete(task_id)
             else:
