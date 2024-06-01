@@ -10,7 +10,7 @@ def signin():
 
 
 def do_task_list():
-    resp_json = HttpApi.tasklist()
+    resp_json = HttpApi.task_list()
     if resp_json is not None:
         # print("任务列表获取成功")
         task_list = resp_json["data"]["taskList"]
@@ -134,7 +134,7 @@ def module_report(ext_data, task_id, task_detail):
 
 
 def do_gift_list():
-    resp_json = HttpApi.tasklist()
+    resp_json = HttpApi.task_list()
     if resp_json is not None:
         # print("礼物列表获取成功")
         gift_list = resp_json["data"]["liveness"]["livenessGiftList"]

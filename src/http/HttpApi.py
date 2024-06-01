@@ -11,7 +11,7 @@ def signin():
     return resp_json
 
 
-def tasklist():
+def task_list():
     resp_json = HttpUtil.post_h5api(
         "/act_getscoretasklist.php",
         {}
