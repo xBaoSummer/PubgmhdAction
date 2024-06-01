@@ -11,6 +11,14 @@ def signin():
     return resp_json
 
 
+def like_records():
+    resp_json = HttpUtil.post_api(
+        "/user/likerecords",
+        {}
+    )
+    return resp_json
+
+
 def task_list():
     resp_json = HttpUtil.post_h5api(
         "/act_getscoretasklist.php",

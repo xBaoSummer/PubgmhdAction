@@ -9,6 +9,26 @@ def signin():
         print("签到成功")
 
 
+def do_like_records():
+    resp_json = HttpApi.like_records()
+    if resp_json is not None:
+        # print("点赞记录获取成功")
+        for info in resp_json["data"]["infoList"]:
+            info_id = info["iInfoId"]
+            print(f">正在清理点赞: {info_id}")
+            if HttpApi.like_info(info_id, "0") is not None:
+                print(f">清赞成功")
+            else:
+                print(f">清赞失败:")
+        for moment in resp_json["data"]["momentList"]:
+            moment_id = moment["momentId"]
+            print(f">正在清理点赞: {moment_id}")
+            if HttpApi.like_moment(moment_id, "0") is not None:
+                print(f">清赞成功")
+            else:
+                print(f">清赞失败")
+
+
 def do_task_list():
     resp_json = HttpApi.task_list()
     if resp_json is not None:
@@ -37,11 +57,9 @@ def task_complete(task_id, task_detail):
         page_info = HttpApi.page_info()
         if page_info is not None:
             like_count = 0
-            for i in range(5):
+            for i in range(3):
                 if HttpApi.like_info(page_info["data"]["list"][i]["iInfoId"], "1") is not None:
                     like_count += 1
-                    if like_count == 3:
-                        break
             if like_count == 3:
                 print(f">任务成功: {task_id}-{task_detail}")
                 HttpApi.task_complete(task_id)
@@ -54,11 +72,9 @@ def task_complete(task_id, task_detail):
         page_moment = HttpApi.page_moment()
         if page_moment is not None:
             like_count = 0
-            for i in range(5):
+            for i in range(3):
                 if HttpApi.like_moment(page_moment["data"]["list"][i]["momentId"], "1") is not None:
                     like_count += 1
-                    if like_count == 3:
-                        break
             if like_count == 3:
                 print(f">任务成功: {task_id}-{task_detail}")
                 HttpApi.task_complete(task_id)
@@ -173,5 +189,6 @@ if __name__ == '__main__':
     print("##########################################")
     print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     signin()
+    do_like_records()
     do_task_list()
     do_gift_list()
